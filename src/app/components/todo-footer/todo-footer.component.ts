@@ -21,4 +21,9 @@ export class TodoFooterComponent {
 			`${this.activeTodos()} ${this.activeTodos() === 1 ? "item" : "items"} left`,
 	);
 
+	someCompleted = computed(() => this.todos().some((todo) => todo.completed));
+
+	clearCompleted() {
+		this.todoService.clearCompleted();
+	}
 }

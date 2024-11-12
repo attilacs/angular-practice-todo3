@@ -1,5 +1,8 @@
 @if(todos().length){
 <footer>
     <span>{{ activeTodosText() }}</span>
+    @if(someCompleted()){
+    <button type="button" (click)="clearCompleted()">Clear completed</button>
+    }
 </footer>
 }

@@ -41,6 +41,11 @@ export class TodoService {
 		this.saveTodos(todos);
 	}
 
+	clearCompleted() {
+		const todos = this.loadedTodos().filter((todo) => !todo.completed);
+		this.saveTodos(todos);
+	}
+
 	private saveTodos(todos: Todo[]) {
 		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
 		this.loadedTodos.set(todos);

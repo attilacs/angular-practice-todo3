@@ -16,11 +16,8 @@ export class TodoService {
 			title,
 			completed: false,
 		};
-		sessionStorage.setItem(
-			this.storageKey,
-			JSON.stringify([...this.todos(), todoToAdd]),
-		);
-		this.loadedTodos.update((todos) => [...todos, todoToAdd]);
+		const todos = [...this.todos(), todoToAdd];
+		this.saveTodos(todos);
 	}
 
 	fetchTodos(): void {
@@ -31,18 +28,20 @@ export class TodoService {
 
 	updateTodo(todo: Todo) {
 		const todos = this.loadedTodos().map((t) => (t.id !== todo.id ? t : todo));
-		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
-		this.loadedTodos.set(todos);
+		this.saveTodos(todos);
 	}
 
 	toggleAll(completed: boolean) {
 		const todos = this.loadedTodos().map((todo) => ({ ...todo, completed }));
-		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
-		this.loadedTodos.set(todos);
+		this.saveTodos(todos);
 	}
 
 	deleteTodo(id: string) {
 		const todos = this.loadedTodos().filter((todo) => todo.id !== id);
+		this.saveTodos(todos);
+	}
+
+	private saveTodos(todos: Todo[]) {
 		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
 		this.loadedTodos.set(todos);
 	}

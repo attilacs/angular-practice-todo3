@@ -29,6 +29,12 @@ export class TodoService {
 		this.loadedTodos.set(todos);
 	}
 
+	updateTodo(todo: Todo) {
+		const todos = this.loadedTodos().map((t) => (t.id !== todo.id ? t : todo));
+		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
+		this.loadedTodos.set(todos);
+	}
+
 	deleteTodo(id: string) {
 		const todos = this.loadedTodos().filter((todo) => todo.id !== id);
 		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));

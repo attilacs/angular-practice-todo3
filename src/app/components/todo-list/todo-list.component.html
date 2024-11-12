@@ -1,2 +1,9 @@
-<p>todo-list works!</p>
-<app-todo-item />
+@if(todos().length) {
+<ul>
+    @for(todo of todos(); track todo.id) {
+    <app-todo-item [todo]="todo" />
+    }
+</ul>
+} @else {
+<p>No todos to show</p>
+}

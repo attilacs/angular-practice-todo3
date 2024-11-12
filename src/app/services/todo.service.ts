@@ -28,4 +28,10 @@ export class TodoService {
 		const todos = todosJson ? JSON.parse(todosJson) : [];
 		this.loadedTodos.set(todos);
 	}
+
+	deleteTodo(id: string) {
+		const todos = this.loadedTodos().filter((todo) => todo.id !== id);
+		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
+		this.loadedTodos.set(todos);
+	}
 }

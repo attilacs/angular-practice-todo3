@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { computed, Injectable, signal } from "@angular/core";
 import type { Todo } from "../interfaces/todo";
 
 @Injectable({
@@ -31,6 +31,12 @@ export class TodoService {
 
 	updateTodo(todo: Todo) {
 		const todos = this.loadedTodos().map((t) => (t.id !== todo.id ? t : todo));
+		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
+		this.loadedTodos.set(todos);
+	}
+
+	toggleAll(completed: boolean) {
+		const todos = this.loadedTodos().map((todo) => ({ ...todo, completed }));
 		sessionStorage.setItem(this.storageKey, JSON.stringify(todos));
 		this.loadedTodos.set(todos);
 	}

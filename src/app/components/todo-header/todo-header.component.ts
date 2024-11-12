@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { TodoService } from "../../services/todo.service";
 
@@ -11,9 +11,12 @@ import { TodoService } from "../../services/todo.service";
 })
 export class TodoHeaderComponent {
 	private todoService = inject(TodoService);
+	todos = this.todoService.todos;
 	form = new FormGroup({
 		title: new FormControl(""),
 	});
+
+	isAllCompleted = computed(() => this.todos().every((todo) => todo.completed));
 
 	onEnter() {
 		this.onSubmit();
@@ -26,5 +29,10 @@ export class TodoHeaderComponent {
 		}
 		this.todoService.addTodo(title);
 		this.form.reset();
+	}
+
+	toggleAll(e: Event) {
+		const input = e.target as HTMLInputElement;
+		this.todoService.toggleAll(input.checked);
 	}
 }

@@ -1,3 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if(todos().length){
+    <input type="checkbox" [checked]="isAllCompleted()" (change)="toggleAll($event)" title="Toggle All Input" />
+    }
     <input formControlName="title" (keyup.enter)="onEnter()" placeholder="What needs to be done?" autofocus="" />
 </form>

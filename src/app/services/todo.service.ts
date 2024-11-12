@@ -9,6 +9,20 @@ export class TodoService {
 	private loadedTodos = signal<Todo[]>([]);
 	todos = this.loadedTodos.asReadonly();
 
+	addTodo(title: string) {
+		const id = Date.now().toString();
+		const todoToAdd: Todo = {
+			id,
+			title,
+			completed: false,
+		};
+		sessionStorage.setItem(
+			this.storageKey,
+			JSON.stringify([...this.todos(), todoToAdd]),
+		);
+		this.loadedTodos.update((todos) => [...todos, todoToAdd]);
+	}
+
 	fetchTodos(): void {
 		const todosJson = sessionStorage.getItem(this.storageKey);
 		const todos = todosJson ? JSON.parse(todosJson) : [];

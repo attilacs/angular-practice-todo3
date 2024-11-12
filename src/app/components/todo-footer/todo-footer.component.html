@@ -1,1 +1,5 @@
-<p>todo-footer works!</p>
+@if(todos().length){
+<footer>
+    <span>{{ activeTodosText() }}</span>
+</footer>
+}

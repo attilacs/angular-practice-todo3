@@ -1,6 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="d-flex align-items-center gap-2 mb-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- TODO: add placeholder -->
     @if(todos().length){
-    <input type="checkbox" [checked]="isAllCompleted()" (change)="toggleAll($event)" title="Toggle All Input" />
+    <input class="form-check-input" type="checkbox" [checked]="isAllCompleted()" (change)="toggleAll($event)"
+        title="Toggle All Input" />
     }
-    <input formControlName="title" (keyup.enter)="onEnter()" placeholder="What needs to be done?" autofocus="" />
+    <input class="form-control" formControlName="title" (keyup.enter)="onEnter()" placeholder="What needs to be done?"
+        autofocus="" />
 </form>

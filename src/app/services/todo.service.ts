@@ -9,6 +9,10 @@ export class TodoService {
 	private loadedTodos = signal<Todo[]>([]);
 	todos = this.loadedTodos.asReadonly();
 
+	constructor() {
+		this.fetchTodos();
+	}
+
 	addTodo(title: string) {
 		const id = Date.now().toString();
 		const todoToAdd: Todo = {
@@ -24,6 +28,16 @@ export class TodoService {
 		const todosJson = sessionStorage.getItem(this.storageKey);
 		const todos = todosJson ? JSON.parse(todosJson) : [];
 		this.loadedTodos.set(todos);
+	}
+
+	getItems(type = "all"): Todo[] {
+		switch (type) {
+			case "active":
+				return this.todos().filter((todo) => !todo.completed);
+			case "completed":
+				return this.todos().filter((todo) => todo.completed);
+		}
+		return this.todos();
 	}
 
 	updateTodo(todo: Todo) {

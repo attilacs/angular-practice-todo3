@@ -4,5 +4,16 @@
     @if(someCompleted()){
     <button type="button" (click)="clearCompleted()">Clear completed</button>
     }
+    <ul class="filters">
+        <li>
+            <a routerLink="/" [class.selected]="path === 'all'">All</a>
+        </li>
+        <li>
+            <a routerLink="/active" [class.selected]="path === 'active'">Active</a>
+        </li>
+        <li>
+            <a routerLink="/completed" [class.selected]="path === 'completed'">Completed</a>
+        </li>
+    </ul>
 </footer>
 }

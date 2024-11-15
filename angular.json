@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "2024-11-11-angular-practice-todo3": {
+    "angular-practice-todo3": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/2024-11-11-angular-practice-todo3",
+            "outputPath": "dist/angular-practice-todo3",
+            "baseHref": "/angular-practice-todo3/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

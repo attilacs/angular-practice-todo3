@@ -1,4 +1,10 @@
-# 20241111AngularPracticeTodo3
+# Angular Todo App (Session Storage)
+
+A simple todo app inspired by [TodoMVC](https://todomvc.com/)
+
+Live Demo on [GitHub Pages](https://attilacs.github.io/angular-todo-session-storage/)
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
 

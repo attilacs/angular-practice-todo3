@@ -1,5 +1,5 @@
 {
-  "name": "2024-11-11-angular-practice-todo3",
+  "name": "angular-todo-session-storage",
   "version": "0.0.0",
   "scripts": {
     "db": "json-server db.json",

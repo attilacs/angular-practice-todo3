@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-practice-todo3": {
+    "angular-todo-session-storage": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,8 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-practice-todo3",
-            "baseHref": "/angular-practice-todo3/",
+            "outputPath": "dist/angular-todo-session-storage",
+            "baseHref": "/angular-todo-session-storage/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "2024-11-11-angular-practice-todo3:build:production"
+              "buildTarget": "angular-todo-session-storage:build:production"
             },
             "development": {
-              "buildTarget": "2024-11-11-angular-practice-todo3:build:development"
+              "buildTarget": "angular-todo-session-storage:build:development"
             }
           },
           "defaultConfiguration": "development"

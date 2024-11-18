@@ -30,11 +30,11 @@ jobs:
       run: npm ci
       
     - name: Build Angular app
-      run: npm run build -- --base-href /angular-practice-todo3/
+      run: npm run build -- --base-href /angular-todo-session-storage/
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages
-        folder: dist/angular-practice-todo3/browser
+        folder: dist/angular-todo-session-storage/browser
         token: ${{ secrets.GH_token }}

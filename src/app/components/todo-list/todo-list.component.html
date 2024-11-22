@@ -1,9 +1,7 @@
-@if(todos.length) {
+@for(todo of todos; track todo.id) {
 <ul class="list-group mb-2">
-    @for(todo of todos; track todo.id) {
     <app-todo-item [todo]="todo" />
-    }
 </ul>
-} @else {
+} @empty {
 <p class="text-center mb-2">No todos to show</p>
 }
